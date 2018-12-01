@@ -1,6 +1,6 @@
 ----
 layout: slide
 title: "Welcome to our second slide!"
-No description provided.
-Your text
+----
+There is revolution coming.
 Use the left arrow to go back!
