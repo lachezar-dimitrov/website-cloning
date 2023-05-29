@@ -1,0 +1,466 @@
+:root {
+  --primary-color: white;
+  --text: #455963;
+  --links: #4caf50;
+  --hover: black;
+  --bg-2: #e9e9e9;
+  --footer: #3e5e7e;
+}
+
+body {
+  color: var(--hover);
+  background-color: var(--primary-color);
+  width: 100%;
+  margin: 0;
+  font-size: 1vw;
+  font-family: "PT Serif Caption", serif;
+  line-height: 1.5;
+  text-align: left;
+}
+
+a {
+  font-size: 1.8vw;
+  letter-spacing: 2px;
+  text-decoration: none;
+}
+
+a:link,
+a:visited {
+  color: var(--text);
+}
+
+a:hover,
+a:active {
+  color: var(--text);
+}
+
+h1 {
+  margin: 0;
+  letter-spacing: 5px;
+}
+
+h3 {
+  border-radius: 15%;
+  margin: 0;
+  background-color: var(--text);
+}
+
+h2,
+h4,
+h5,
+h6 {
+  margin: 0;
+  letter-spacing: 3px;
+}
+
+p {
+  font-family: "Montserrat", sans-serif;
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+/* Header */
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.mentormate-logo {
+  background-image: url("img/mentormate-logo.png");
+  background-repeat: no-repeat;
+  background-size: auto 100%;
+  background-position: center;
+}
+
+nav {
+  z-index: 1;
+  font-family: "Alice", serif;
+  background-color: var(--primary-color);
+  position: fixed;
+  width: 100%;
+  display: grid;
+  grid-template-areas: ". nav nav";
+  box-shadow: 0px 16px 32px 0px rgba(0, 0, 0, 0.2);
+}
+
+Header nav ul {
+  grid-template-columns: repeat(auto-fit, minmax(91px, 1fr));
+  display: grid;
+  align-content: center;
+  grid-area: nav;
+}
+
+Header nav ul li {
+  text-align: center;
+  display: inline;
+  list-style: none;
+}
+
+Header nav a:link {
+  display: inline-block;
+  padding: 5% 20%;
+}
+
+Header nav a:hover,
+.mainHeader nav a:active,
+.mainHeader nav .active a:link,
+.mainHeader nav .active a:visited {
+  color: var(--hover);
+  text-shadow: none;
+}
+/* /header */
+
+/* main-content */
+/* content-text */
+.fixed-position {
+  background-color: var(--primary-color);
+  padding: 2%;
+  font-size: 3.5vw;
+  text-align: center;
+  color: var(--text);
+}
+
+.content {
+  color: var(--text);
+  text-align: center;
+}
+
+.content-main-text h5,
+p {
+  margin: 6% 0;
+}
+
+.content-main-text {
+  font-size: 1.75vw;
+  padding: 7% 18%;
+}
+
+.content-odd,
+.content-even {
+  display: grid;
+}
+
+.content-odd {
+  grid-template-columns: 45% 55%;
+  background-color: var(--bg-2);
+}
+
+.content-even {
+  grid-template-columns: 55% 45%;
+  background-color: var(--primary-color);
+}
+
+.content-odd-text,
+.content-even-text {
+  padding: 5% 7%;
+  font-size: 1.25vw;
+}
+/* /content-text */
+
+/* media */
+.media {
+  padding: 0 5%;
+  display: grid;
+  grid-template-columns: auto auto;
+}
+
+.offices-media {
+  padding: 2% 5%;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-gap: 2%;
+}
+
+.offices-media .middle a {
+  background-color: var(--links);
+  color: white;
+  font-size: 1vw;
+}
+
+.offices-media h3 {
+  padding: 2%;
+}
+
+.container {
+  position: relative;
+}
+
+.container img {
+  width: 100%;
+  height: auto;
+}
+
+.image {
+  opacity: 1;
+  transition: 1s ease;
+  backface-visibility: hidden;
+}
+
+.middle {
+  transition: 0.8s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.container:hover .image {
+  opacity: 0.2;
+}
+
+.container:hover .middle {
+  opacity: 1;
+}
+
+.middle a {
+  background-color: var(--links);
+  color: white;
+  font-size: 1.5vw;
+}
+/* /media */
+
+/* services */
+.services {
+  display: grid;
+  grid-template-columns: auto;
+  grid-row-gap: 10%;
+  padding: 3% 5%;
+}
+
+.service-container {
+  display: grid;
+  grid-template-columns: 40% 60%;
+}
+
+.service-container h1 {
+  color: white;
+  padding: 20%;
+  font-size: 3.5vw;
+}
+
+.strategic-consulting {
+  background-color: yellow;
+}
+
+/* /services */
+
+/* /main-content */
+
+/* contact-form*/
+#orders-tittle {
+  background-color: pink;
+  grid-area: top_left;
+  margin: 0;
+  padding: 20%;
+}
+
+#orders-bg {
+  grid-area: right;
+}
+
+.ContactBody {
+  background-color: white;
+  max-height: 720px;
+  max-width: 1580px;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  font-size: 13px;
+  font-style: Verdana, Tahoma, sans-serif;
+  display: grid;
+  grid-template-areas:
+    "top_left right"
+    "left right";
+}
+
+.form {
+  padding: 10%;
+  background-color: pink;
+  grid-area: left;
+}
+
+input,
+textarea {
+  padding: 10px;
+  border: 1px solid #e5e5e5;
+  width: 200px;
+  color: gray;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 8px;
+  -moz-box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 8px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 8px;
+}
+
+textarea {
+  width: 400px;
+  max-width: 400px;
+  min-width: 400px;
+  height: 150px;
+  min-height: 50px;
+  max-height: 500px;
+  line-height: 18px;
+}
+
+input:hover,
+textarea:hover,
+input:focus,
+textarea:focus {
+  border-color: 1px solid #c9c9c9;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 8px;
+  -moz-box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 8px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 8px;
+}
+
+.form label {
+  margin-left: 10px;
+  color: gray;
+}
+
+.submit input {
+  width: 100px;
+  height: 40px;
+  background-color: #474e69;
+  color: #fff;
+  border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+}
+
+.submit input:hover {
+  box-shadow: rgba(255, 255, 255, 0.2) 0px 0px 8px;
+  -moz-box-shadow: rgba(255, 255, 255, 0.2) 0px 0px 8px;
+  -webkit-box-shadow: rgba(255, 255, 255, 0.2) 0px 0px 8px;
+  background-color: #585d73;
+}
+
+#orders-bg {
+  width: 100%;
+}
+/* /contact-form */
+
+/* footer */
+footer {
+  font-family: "Alice", serif;
+  background-color: var(--footer);
+  color: var(--primary-color);
+  text-align: left;
+  list-style: none;
+  padding: 1% 5%;
+  margin: 0;
+}
+
+footer a:hover,
+footer a:active,
+footer a:link,
+footer a:visited {
+  color: var(--primary-color);
+}
+
+.links {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(91px, 1fr));
+  align-content: center;
+  margin-bottom: 3%;
+}
+
+.address {
+  display: grid;
+  grid-template-columns: auto auto auto;
+}
+/* /footer */
+
+@media only screen and (min-width: 150px) and (max-width: 1000px) {
+  body {
+    font-size: 2.5vw;
+  }
+
+  a {
+    font-size: 4vw;
+  }
+
+  .mentormate-logo {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+
+  nav {
+    display: block;
+    position: static;
+    box-shadow: 0px 16px 32px 0px rgba(0, 0, 0, 0.2);
+  }
+
+  Header nav ul {
+    grid-template-columns: auto auto;
+    padding-left: 0;
+    line-height: 0;
+  }
+
+  Header nav a:link {
+    padding: 7% 0%;
+  }
+
+  .content-main-text {
+    font-size: 3.25vw;
+  }
+  .content-odd-text,
+  .content-even-text {
+    font-size: 2.75vw;
+  }
+
+  .content-odd,
+  .content-even {
+    display: grid;
+    grid-template-columns: auto;
+  }
+
+  .media {
+    grid-template-columns: auto;
+    padding: 0;
+  }
+
+  .offices-media {
+    grid-template-columns: auto auto;
+    grid-gap: 2%;
+    padding: 5%;
+  }
+
+  .offices-media .middle a {
+    font-size: 2vw;
+  }
+
+  .middle h3 {
+    font-size: 3vw;
+  }
+
+  .middle {
+    opacity: 1;
+  }
+
+  .middle a,
+  .middle p,
+  .middle h4 {
+    opacity: 0;
+  }
+
+  .container:hover .middle a,
+  .container:hover .middle p,
+  .container:hover .middle h4 {
+    opacity: 1;
+  }
+
+  .Firstcontainer {
+    display: grid;
+    grid-template-columns: auto auto auto;
+  }
+
+  footer {
+    padding: 1% 1%;
+    text-align: center;
+  }
+}
