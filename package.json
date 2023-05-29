@@ -8,5 +8,6 @@
   "author": "Lachezar-Tihomir",
   "license": "MIT",
   "dependencies": {
+    "jquery": "^3.7.0"
   }
 }
