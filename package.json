@@ -1,16 +1,12 @@
 {
-  "name": "npm-first-try",
+  "name": "website-cloning",
   "version": "1.0.0",
-  "description": "telerik-week-1-npm",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js"
   },
-  "author": "Lachezar",
+  "author": "Lachezar-Tihomir",
   "license": "MIT",
   "dependencies": {
-    "@types/lodash": "^4.14.150",
-    "lowdash": "^1.2.0"
   }
 }
