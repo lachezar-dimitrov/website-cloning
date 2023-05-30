@@ -17,7 +17,6 @@ body {
   line-height: 1.5;
   text-align: left;
 }
-
 a {
   font-size: 1.8vw;
   letter-spacing: 2px;
@@ -58,10 +57,21 @@ p {
 }
 
 img {
-  width: 100%;
+  width: 20%;
   height: auto;
 }
-
+.burgers{
+  display: flex;
+  flex-direction: column;
+}
+.buttons{
+  width: 20vw;
+  height: 4vh;
+  border: 2px solid black;
+  border-radius: 20px;
+  font-size: 15px;
+  text-align: center;
+}
 /* Header */
 ul {
   list-style: none;
