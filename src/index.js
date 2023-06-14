@@ -32,6 +32,8 @@ for (const navigationItem of navigationItems) {
 }
 
 function addClass(className, element) {
+  console.log(className)
+  console.log(element)
   element.classList.add(className)
 }
 
@@ -47,35 +49,39 @@ function textContent(element, textChange) {
   element.textContent = textChange
 }
 
+function createElement(elementType){
+  return document.createElement(elementType)
+}
+
 const ingredientRemove = "ingredientRemove"
-const burgerMenus = document.createElement("div");
+const burgerMenus = createElement("div")
 addClass("burgers", burgerMenus)
-const burgerBeggining = document.createElement("div");
+const burgerBeggining = createElement("div");
 addClass("burgers", burgerBeggining)
 setAttribute(burgerBeggining, "id", "ingredientRemove")
-const burgerTop = document.createElement("img");
+const burgerTop = createElement("img");
 burgerTop.src = "Images/burgerTop.jfif"
-const burgerBottom = document.createElement("img");
+const burgerBottom = createElement("img");
 burgerBottom.src = "Images/burgerBottom.jfif"
 appendChild(burgerMenus, burgerTop)
 appendChild(burgerMenus, burgerBeggining)
 appendChild(burgerMenus, burgerBottom)
-const add1 = document.createElement("button")
+const add1 = createElement("button")
 addClass("buttons", add1)
 setAttribute(add1, "id", "saladButton")
 textContent(add1, "Добавете салата")
 add1.addEventListener("click", () => addIngredients1("salad", "Images/salad.jpg", "salad2"))
-const add2 = document.createElement("button")
+const add2 = createElement("button")
 addClass("buttons", add2)
 setAttribute(add1, "id", "meatButton")
 textContent(add2, "Добавете месо")
 add2.addEventListener("click", () => addIngredients1("meat", "Images/meat.jpg", "meat2"))
-const add3 = document.createElement("button")
+const add3 = createElement("button")
 addClass("buttons", add3)
 textContent(add3, "Добавете сирене")
 setAttribute(add1, "id", "cheeseButton")
 add3.addEventListener("click", () => addIngredients1("cheese", "Images/cheese.jpg", "cheese2"))
-const add4 = document.createElement("button")
+const add4 = createElement("button")
 add4.addEventListener("click", () => addToBasket())
 addClass("buttons", add4)
 textContent(add4, "Добавете в количката")
@@ -86,20 +92,20 @@ appendChild(burgerMenus, add3)
 appendChild(burgerMenus, add4)
 root.appendChild(burgerMenus)
 
-const Price = document.createElement("div");
-const add5 = document.createElement("button")
+const Price = createElement("div");
+const add5 = createElement("button")
 addClass("buttons", add5)
 textContent(add5, "Количка")
 add5.textContent = "Количка";
-const normalPrice = document.createElement("div")
+const normalPrice = createElement("div")
 textContent(normalPrice, "Цена: 5лв.")
 appendChild(Price, normalPrice)
 appendChild(Price, add5)
 
 Price.appendChild(add5)
 let storeNumberofBurgers = 0
-const numberOfIngrediensandBurgers = document.createElement("h1")
-const basketContainer = document.createElement("div")
+const numberOfIngrediensandBurgers = createElement("h1")
+const basketContainer = createElement("div")
 appendChild(Price, numberOfIngrediensandBurgers)
 appendChild(Price, basketContainer)
 const ingredientCount = {
@@ -116,7 +122,7 @@ const ingredientPrice = {
 let stockPrice = 5
 const price = "Цена: "
 function addIngredients1(ingredientType, src, ingredients) {
-  const ingredientPosition = document.createElement("img")
+  const ingredientPosition = createElement("img")
   ingredientPosition.src = src
   burgerBeggining.appendChild(ingredientPosition)
   ingredientCount[ingredientType] += 1
@@ -138,7 +144,7 @@ function addToBasket() {
 
 
   let entries = Object.entries(ingredientCount);
-  const ingredientsList = document.createElement("ul")
+  const ingredientsList = createElement("ul")
   for (const ingredientInformation of entries) {
     const [ingredientName, ingredientCount1] = ingredientInformation
     addIngredientInfo(ingredientName, ingredientCount1, ingredientsList)
@@ -158,7 +164,7 @@ function resetBurgerBuilder() {
 }
 
 function addIngredientInfo(ingredientName, ingredientCount, parentNode) {
-  const listItem = document.createElement("li")
+  const listItem = createElement("li")
   textContent(listItem, `${ingredientCount}: ${ingredientName}`)
   parentNode.appendChild(listItem)
 }
