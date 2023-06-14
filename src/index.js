@@ -43,6 +43,10 @@ function setAttribute(element, attributeKey, attributeValue) {
   element.setAttribute(attributeKey, attributeValue)
 }
 
+function textContent(element, textChange) {
+  element.textContent = textChange
+}
+
 const ingredientRemove = "ingredientRemove"
 const burgerMenus = document.createElement("div");
 addClass("burgers", burgerMenus)
@@ -59,22 +63,22 @@ appendChild(burgerMenus, burgerBottom)
 const add1 = document.createElement("button")
 addClass("buttons", add1)
 setAttribute(add1, "id", "saladButton")
-add1.textContent = "Добавете салата";
+textContent(add1, "Добавете салата")
 add1.addEventListener("click", () => addIngredients1("salad", "Images/salad.jpg", "salad2"))
 const add2 = document.createElement("button")
 addClass("buttons", add2)
 setAttribute(add1, "id", "meatButton")
-add2.textContent = "Добавете месо";
+textContent(add2, "Добавете месо")
 add2.addEventListener("click", () => addIngredients1("meat", "Images/meat.jpg", "meat2"))
 const add3 = document.createElement("button")
 addClass("buttons", add3)
-add3.textContent = "Добавете сирене";
+textContent(add3, "Добавете сирене")
 setAttribute(add1, "id", "cheeseButton")
 add3.addEventListener("click", () => addIngredients1("cheese", "Images/cheese.jpg", "cheese2"))
 const add4 = document.createElement("button")
 add4.addEventListener("click", () => addToBasket())
 addClass("buttons", add4)
-add4.textContent = "Добави в количка";
+textContent(add4, "Добавете в количката")
 
 appendChild(burgerMenus, add1)
 appendChild(burgerMenus, add2)
@@ -85,9 +89,10 @@ root.appendChild(burgerMenus)
 const Price = document.createElement("div");
 const add5 = document.createElement("button")
 addClass("buttons", add5)
+textContent(add5, "Количка")
 add5.textContent = "Количка";
 const normalPrice = document.createElement("div")
-normalPrice.textContent = "Цена: 5лв."
+textContent(normalPrice, "Цена: 5лв.")
 appendChild(Price, normalPrice)
 appendChild(Price, add5)
 
@@ -117,7 +122,7 @@ function addIngredients1(ingredientType, src, ingredients) {
   ingredientCount[ingredientType] += 1
   if (ingredientCount[ingredientType] > 1) {
     stockPrice += ingredientPrice[ingredients]
-    normalPrice.textContent = price + stockPrice + "лв."
+    textContent(normalPrice, price + stockPrice + "лв.")
   }
 
 }
@@ -128,7 +133,8 @@ function addToBasket() {
   const deletingIngredient = document.getElementById(ingredientRemove)
   deletingIngredient.innerHTML = null
   storeNumberofBurgers++
-  add5.textContent = storeNumberofBurgers + " Бургера в кошницата"
+
+  textContent(add5, storeNumberofBurgers + " Бургера в кошницата")
 
 
   let entries = Object.entries(ingredientCount);
@@ -138,7 +144,7 @@ function addToBasket() {
     addIngredientInfo(ingredientName, ingredientCount1, ingredientsList)
 
   }
-  numberOfIngrediensandBurgers.textContent = `${storeNumberofBurgers} бургера`
+  textContent(numberOfIngrediensandBurgers, `${storeNumberofBurgers} бургера`)
   basketContainer.appendChild(ingredientsList)
   resetBurgerBuilder()
 }
@@ -153,7 +159,7 @@ function resetBurgerBuilder() {
 
 function addIngredientInfo(ingredientName, ingredientCount, parentNode) {
   const listItem = document.createElement("li")
-  listItem.textContent = `${ingredientCount}: ${ingredientName}`
+  textContent(listItem, `${ingredientCount}: ${ingredientName}`)
   parentNode.appendChild(listItem)
 }
 
