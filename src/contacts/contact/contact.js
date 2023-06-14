@@ -5,4 +5,4 @@ const sendEmail = () => {
   window.location.href = link;
   alert('Thanks for your purchase!');
   // window.location.reload();
-}
+};

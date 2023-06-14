@@ -6,7 +6,7 @@ import {
   ELEMENT,
   APP_TEXT_CONTENT,
   IMG_PATH,
-} from "./constants.js";
+} from './constants.js';
 import {
   getElementById,
   addClass,
@@ -16,20 +16,20 @@ import {
   createElement,
   setSource,
   addEventListener,
-} from "./utiles.js";
+} from './utiles.js';
 
 const navigationItems = [
   {
-    title: "Home",
-    url: "/",
+    title: 'Home',
+    url: '/',
   },
   {
-    title: "About",
-    url: "/about",
+    title: 'About',
+    url: '/about',
   },
   {
-    title: "Contact",
-    url: "/contact",
+    title: 'Contact',
+    url: '/contact',
   },
 ];
 
@@ -49,10 +49,10 @@ for (const navigationItem of navigationItems) {
 }
 
 const burgerMenus = createElement(ELEMENT.DIV);
-addClass("burgers", burgerMenus);
+addClass('burgers', burgerMenus);
 const burgerBeginning = createElement(ELEMENT.DIV);
-addClass("burgers", burgerBeginning);
-setAttribute(burgerBeginning, "id", INGREDIENT_REMOVE_ID);
+addClass('burgers', burgerBeginning);
+setAttribute(burgerBeginning, 'id', INGREDIENT_REMOVE_ID);
 const burgerTop = createElement(ELEMENT.IMG);
 setSource(burgerTop, IMG_PATH.BURGER_TOP);
 const burgerBottom = createElement(ELEMENT.IMG);
@@ -62,27 +62,21 @@ appendChild(burgerMenus, burgerBeginning);
 appendChild(burgerMenus, burgerBottom);
 const addSaladButton = createElement(ELEMENT.BUTTON);
 addClass(BUTTONS_CLASS_NAME, addSaladButton);
-setAttribute(addSaladButton, "id", "saladButton");
+setAttribute(addSaladButton, 'id', 'saladButton');
 textContent(addSaladButton, APP_TEXT_CONTENT.ADD_SALAD);
-addEventListener(addSaladButton, "click", () =>
-  addIngredients1("salad", IMG_PATH.SALAD, "salad2")
-);
+addEventListener(addSaladButton, 'click', () => addIngredients1('salad', IMG_PATH.SALAD, 'salad2'));
 const addMeatButton = createElement(ELEMENT.BUTTON);
 addClass(BUTTONS_CLASS_NAME, addMeatButton);
-setAttribute(addSaladButton, "id", "meatButton");
+setAttribute(addSaladButton, 'id', 'meatButton');
 textContent(addMeatButton, APP_TEXT_CONTENT.ADD_MEAT);
-addEventListener(addMeatButton, "click", () =>
-  addIngredients1("meat", IMG_PATH.MEAT, "meat2")
-);
+addEventListener(addMeatButton, 'click', () => addIngredients1('meat', IMG_PATH.MEAT, 'meat2'));
 const addCheeseButton = createElement(ELEMENT.BUTTON);
 addClass(BUTTONS_CLASS_NAME, addCheeseButton);
 textContent(addCheeseButton, APP_TEXT_CONTENT.ADD_CHEESE);
-setAttribute(addSaladButton, "id", "cheeseButton");
-addEventListener(addCheeseButton, "click", () =>
-  addIngredients1("cheese", IMG_PATH.CHEESE, "cheese2")
-);
+setAttribute(addSaladButton, 'id', 'cheeseButton');
+addEventListener(addCheeseButton, 'click', () => addIngredients1('cheese', IMG_PATH.CHEESE, 'cheese2'));
 const addToBasketButton = createElement(ELEMENT.BUTTON);
-addEventListener(addToBasketButton, "click", () => addToBasket());
+addEventListener(addToBasketButton, 'click', () => addToBasket());
 addClass(BUTTONS_CLASS_NAME, addToBasketButton);
 textContent(addToBasketButton, APP_TEXT_CONTENT.ADD_TO_BASKET);
 
@@ -124,7 +118,7 @@ function addIngredients1(ingredientType, src, ingredients) {
     stockPrice += ingredientPrice[ingredients];
     textContent(
       normalPrice,
-      price + stockPrice + APP_TEXT_CONTENT.CURRENCY_TYPE
+      price + stockPrice + APP_TEXT_CONTENT.CURRENCY_TYPE,
     );
   }
 }
@@ -132,13 +126,13 @@ function addIngredients1(ingredientType, src, ingredients) {
 function addToBasket() {
   textContent(
     normalPrice,
-    `${APP_TEXT_CONTENT.PRICE} ${defaultBurgerPrice} ${APP_TEXT_CONTENT.CURRENCY_TYPE}`
+    `${APP_TEXT_CONTENT.PRICE} ${defaultBurgerPrice} ${APP_TEXT_CONTENT.CURRENCY_TYPE}`,
   );
   const deletingIngredient = getElementById(INGREDIENT_REMOVE_ID);
   deletingIngredient.innerHTML = null;
   storeNumberofBurgers++;
 
-  let entries = Object.entries(ingredientCount);
+  const entries = Object.entries(ingredientCount);
   const ingredientsList = createElement(ELEMENT.UL);
   for (const ingredientInformation of entries) {
     const [ingredientName, ingredientCount1] = ingredientInformation;
@@ -149,7 +143,7 @@ function addToBasket() {
   resetBurgerBuilder();
 }
 function resetBurgerBuilder() {
-  for (let placeOfingredient in ingredientCount) {
+  for (const placeOfingredient in ingredientCount) {
     if (ingredientCount.hasOwnProperty(placeOfingredient)) {
       ingredientCount[placeOfingredient] = 0;
     }
