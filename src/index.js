@@ -26,16 +26,20 @@ for (const navigationItem of navigationItems) {
   navigationLink.href = navigationItem.url;
   navigationLink.textContent = navigationItem.title;
 
-  navigationLink.classList.add("navigation__link");
+  addClass("navigation__link", navigationLink)
 
   navigationList.appendChild(navigationLink);
 }
 
+function addClass(className, element) {
+  element.classList.add(className)
+}
+
 const ingredientRemove = "ingredientRemove"
 const burgerMenus = document.createElement("div");
-burgerMenus.classList.add("burgers")
+addClass("burgers", burgerMenus)
 const burgerBeggining = document.createElement("div");
-burgerBeggining.classList.add("burgers")
+addClass("burgers", burgerBeggining)
 burgerBeggining.setAttribute("id", ingredientRemove)
 const burgerTop = document.createElement("img");
 burgerTop.src = "Images/burgerTop.jfif"
@@ -45,23 +49,23 @@ burgerMenus.appendChild(burgerTop)
 burgerMenus.appendChild(burgerBeggining)
 burgerMenus.appendChild(burgerBottom)
 const add1 = document.createElement("button")
-add1.classList.add("buttons")
+addClass("buttons", add1)
 add1.setAttribute("id", 'saladButton')
 add1.textContent = "Добавете салата";
 add1.addEventListener("click", () => addIngredients1("salad", "Images/salad.jpg", "salad2"))
 const add2 = document.createElement("button")
-add2.classList.add("buttons")
+addClass("buttons", add2)
 add2.setAttribute("id", 'meatButton')
 add2.textContent = "Добавете месо";
 add2.addEventListener("click", () => addIngredients1("meat", "Images/meat.jpg", "meat2"))
 const add3 = document.createElement("button")
-add3.classList.add("buttons")
+addClass("buttons", add3)
 add3.textContent = "Добавете сирене";
 add3.setAttribute("id", 'cheeseButton')
 add3.addEventListener("click", () => addIngredients1("cheese", "Images/cheese.jpg", "cheese2"))
 const add4 = document.createElement("button")
 add4.addEventListener("click", () => addToBasket())
-add4.classList.add("buttons")
+addClass("buttons", add4)
 add4.textContent = "Добави в количка";
 
 
@@ -73,7 +77,7 @@ root.appendChild(burgerMenus)
 
 const Price = document.createElement("div");
 const add5 = document.createElement("button")
-add5.classList.add("buttons")
+addClass("buttons", add5)
 add5.textContent = "Количка";
 const normalPrice = document.createElement("div")
 normalPrice.textContent = "Цена: 5лв."
@@ -107,7 +111,7 @@ function addIngredients1(ingredientType, src, ingredients) {
     stockPrice += ingredientPrice[ingredients]
     normalPrice.textContent = price + stockPrice + "лв."
   }
-  
+
 }
 
 
