@@ -1,3 +1,4 @@
+/* eslint-disable import/extensions */
 import {
   ROOT_ID,
   INGREDIENT_REMOVE_ID,
@@ -65,17 +66,17 @@ const addSaladButton = createElement(ELEMENT.BUTTON);
 addClass(BUTTONS_CLASS_NAME, addSaladButton);
 setAttribute(addSaladButton, 'id', 'saladButton');
 textContent(addSaladButton, APP_TEXT_CONTENT.ADD_SALAD);
-addEventListener(addSaladButton, 'click', () => addIngredients1('salad', IMG_PATH.SALAD, 'salad2'));
+addEventListener(addSaladButton, 'click', () => addIngredients1('salad', IMG_PATH.SALAD));
 const addMeatButton = createElement(ELEMENT.BUTTON);
 addClass(BUTTONS_CLASS_NAME, addMeatButton);
 setAttribute(addSaladButton, 'id', 'meatButton');
 textContent(addMeatButton, APP_TEXT_CONTENT.ADD_MEAT);
-addEventListener(addMeatButton, 'click', () => addIngredients1('meat', IMG_PATH.MEAT, 'meat2'));
+addEventListener(addMeatButton, 'click', () => addIngredients1('meat', IMG_PATH.MEAT));
 const addCheeseButton = createElement(ELEMENT.BUTTON);
 addClass(BUTTONS_CLASS_NAME, addCheeseButton);
 textContent(addCheeseButton, APP_TEXT_CONTENT.ADD_CHEESE);
 setAttribute(addSaladButton, 'id', 'cheeseButton');
-addEventListener(addCheeseButton, 'click', () => addIngredients1('cheese', IMG_PATH.CHEESE, 'cheese2'));
+addEventListener(addCheeseButton, 'click', () => addIngredients1('cheese', IMG_PATH.CHEESE));
 const addToBasketButton = createElement(ELEMENT.BUTTON);
 addEventListener(addToBasketButton, 'click', () => addToBasket());
 addClass(BUTTONS_CLASS_NAME, addToBasketButton);
@@ -97,26 +98,29 @@ const numberOfIngrediensandBurgers = createElement(ELEMENT.H1);
 const basketContainer = createElement(ELEMENT.DIV);
 appendChild(Price, numberOfIngrediensandBurgers);
 appendChild(Price, basketContainer);
-const ingredientCount = {
-  salad: 0,
-  meat: 0,
-  cheese: 0,
+const ingredientInfo = {
+  salad: {
+    count: 0,
+    price: 0.5,
+  },
+  meat: {
+    count: 0,
+    price: 2.5,
+  },
+  cheese: {
+    count: 0,
+    price: 1.5,
+  },
 };
-const ingredientPrice = {
-  salad2: 0.5,
-  meat2: 2.5,
-  cheese2: 1.5,
-};
-
 let stockPrice = defaultBurgerPrice;
 const price = APP_TEXT_CONTENT.PRICE;
-function addIngredients1(ingredientType, src, ingredients) {
+function addIngredients1(ingredientType, src) {
   const ingredientPosition = createElement(ELEMENT.IMG);
   setSource(ingredientPosition, src);
   appendChild(burgerBeginning, ingredientPosition);
-  ingredientCount[ingredientType] += 1;
-  if (ingredientCount[ingredientType] > 1) {
-    stockPrice += ingredientPrice[ingredients];
+  ingredientInfo[ingredientType].count += 1;
+  if (ingredientInfo[ingredientType].count > 1) {
+    stockPrice += ingredientInfo[ingredientType].price;
     textContent(
       normalPrice,
       price + stockPrice + APP_TEXT_CONTENT.CURRENCY_TYPE,
@@ -133,20 +137,19 @@ function addToBasket() {
   deletingIngredient.innerHTML = null;
   storeNumberofBurgers += 1;
 
-  const entries = Object.entries(ingredientCount);
+  const entries = Object.entries(ingredientInfo);
   const ingredientsList = createElement(ELEMENT.UL);
-  entries.forEach((ingredientInformation) => {
-    const [ingredientName, ingredientCount1] = ingredientInformation;
-    addIngredientInfo(ingredientName, ingredientCount1, ingredientsList);
+  entries.forEach((ingredientEntry) => {
+    const [ingredientName, ingredientProps] = ingredientEntry;
+    addIngredientInfo(ingredientName, ingredientProps.count, ingredientsList);
   });
   textContent(numberOfIngrediensandBurgers, `${storeNumberofBurgers} бургера`);
   appendChild(basketContainer, ingredientsList);
   resetBurgerBuilder();
 }
 function resetBurgerBuilder() {
-  const entries = Object.entries(ingredientCount);
-  entries.forEach((placeOfingredient) => {
-    ingredientCount[placeOfingredient] = 0;
+  Object.keys(ingredientInfo).forEach((placeOfingredient) => {
+    ingredientInfo[placeOfingredient].count = 0;
   });
   stockPrice = defaultBurgerPrice;
 }
