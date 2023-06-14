@@ -1,3 +1,4 @@
+import { ROOT_ID, INGREDIENT_REMOVE_ID, NAVIGATION_LINK, BUTTONS_CLASS_NAME, ELEMENT, APP_TEXT_CONTENT, IMG_PATH } from "./constants.js"
 const navigationItems = [
   {
     title: "Home",
@@ -12,23 +13,21 @@ const navigationItems = [
     url: "/contact",
   },
 ];
-function getElementById(elementID){
+function getElementById(elementID) {
   return document.getElementById(elementID)
 }
-const root = getElementById("root");
-const navigation = createElement("nav");
-const navigationList = createElement("ul");
+const root = getElementById(ROOT_ID);
+const navigation = createElement(ELEMENT.NAV);
+const navigationList = createElement(ELEMENT.UL);
 
 appendChild(root, navigation)
 appendChild(navigation, navigationList)
 
 for (const navigationItem of navigationItems) {
-  const navigationLink = createElement("a");
-
+  const navigationLink = createElement(ELEMENT.A);
   navigationLink.href = navigationItem.url;
-  textContent(navigationLink , navigationItem.title)
-
-  addClass("navigation__link", navigationLink)
+  textContent(navigationLink, navigationItem.title)
+  addClass(NAVIGATION_LINK, navigationLink)
   appendChild(navigationList, navigationLink)
 }
 
@@ -56,63 +55,57 @@ function setSource(element, sourcePath) {
   element.src = sourcePath
 }
 
-function addEventListener(element, type, listener ){
-  element.addEventListener(type,listener)
+function addEventListener(element, type, listener) {
+  element.addEventListener(type, listener)
 }
 
 
-const ingredientRemove = "ingredientRemove"
-const burgerMenus = createElement("div")
+const burgerMenus = createElement(ELEMENT.DIV)
 addClass("burgers", burgerMenus)
-const burgerBeggining = createElement("div");
-addClass("burgers", burgerBeggining)
-setAttribute(burgerBeggining, "id", "ingredientRemove")
-const burgerTop = createElement("img");
-setSource(burgerTop, "Images/burgerTop.jfif")
-const burgerBottom = createElement("img");
-setSource(burgerBottom, "Images/burgerBottom.jfif")
+const burgerBeginning = createElement(ELEMENT.DIV);
+addClass("burgers", burgerBeginning)
+setAttribute(burgerBeginning, "id", INGREDIENT_REMOVE_ID)
+const burgerTop = createElement(ELEMENT.IMG);
+setSource(burgerTop, IMG_PATH.BURGER_TOP)
+const burgerBottom = createElement(ELEMENT.IMG);
+setSource(burgerBottom, IMG_PATH.BURGER_BOTTOM)
 appendChild(burgerMenus, burgerTop)
-appendChild(burgerMenus, burgerBeggining)
+appendChild(burgerMenus, burgerBeginning)
 appendChild(burgerMenus, burgerBottom)
-const add1 = createElement("button")
-addClass("buttons", add1)
-setAttribute(add1, "id", "saladButton")
-textContent(add1, "Добавете салата")
-addEventListener(add1,"click" , () => addIngredients1("salad", "Images/salad.jpg", "salad2"))
-const add2 = createElement("button")
-addClass("buttons", add2)
-setAttribute(add1, "id", "meatButton")
-textContent(add2, "Добавете месо")
-addEventListener(add2,"click" , () => addIngredients1("meat", "Images/meat.jpg", "meat2"))
-const add3 = createElement("button")
-addClass("buttons", add3)
-textContent(add3, "Добавете сирене")
-setAttribute(add1, "id", "cheeseButton")
-addEventListener(add3,"click", () => addIngredients1("cheese", "Images/cheese.jpg", "cheese2"))
-const add4 = createElement("button")
-addEventListener(add4,"click", () => addToBasket())
-addClass("buttons", add4)
-textContent(add4, "Добавете в количката")
+const addSaladButton = createElement(ELEMENT.BUTTON)
+addClass(BUTTONS_CLASS_NAME, addSaladButton)
+setAttribute(addSaladButton, "id", "saladButton")
+textContent(addSaladButton, APP_TEXT_CONTENT.ADD_SALAD)
+addEventListener(addSaladButton, "click", () => addIngredients1("salad", IMG_PATH.SALAD, "salad2"))
+const addMeatButton = createElement(ELEMENT.BUTTON)
+addClass(BUTTONS_CLASS_NAME, addMeatButton)
+setAttribute(addSaladButton, "id", "meatButton")
+textContent(addMeatButton, APP_TEXT_CONTENT.ADD_MEAT)
+addEventListener(addMeatButton, "click", () => addIngredients1("meat", IMG_PATH.MEAT, "meat2"))
+const addCheeseButton = createElement(ELEMENT.BUTTON)
+addClass(BUTTONS_CLASS_NAME, addCheeseButton)
+textContent(addCheeseButton, APP_TEXT_CONTENT.ADD_CHEESE)
+setAttribute(addSaladButton, "id", "cheeseButton")
+addEventListener(addCheeseButton, "click", () => addIngredients1("cheese", IMG_PATH.CHEESE, "cheese2"))
+const addToBasketButton = createElement(ELEMENT.BUTTON)
+addEventListener(addToBasketButton, "click", () => addToBasket())
+addClass(BUTTONS_CLASS_NAME, addToBasketButton)
+textContent(addToBasketButton, APP_TEXT_CONTENT.ADD_TO_BASKET)
 
-appendChild(burgerMenus, add1)
-appendChild(burgerMenus, add2)
-appendChild(burgerMenus, add3)
-appendChild(burgerMenus, add4)
-appendChild(root,burgerMenus)
+appendChild(burgerMenus, addSaladButton)
+appendChild(burgerMenus, addMeatButton)
+appendChild(burgerMenus, addCheeseButton)
+appendChild(burgerMenus, addToBasketButton)
+appendChild(root, burgerMenus)
 
-const Price = createElement("div");
-const add5 = createElement("button")
-addClass("buttons", add5)
-textContent(add5, "Количка")
-const normalPrice = createElement("div")
-textContent(normalPrice, "Цена: 5лв.")
+const defaultBurgerPrice = 5
+const Price = createElement(ELEMENT.DIV);
+const normalPrice = createElement(ELEMENT.DIV)
+textContent(normalPrice, `${APP_TEXT_CONTENT.PRICE} ${defaultBurgerPrice}`)
 appendChild(Price, normalPrice)
-appendChild(Price, add5)
-
-Price.appendChild(add5)
 let storeNumberofBurgers = 0
-const numberOfIngrediensandBurgers = createElement("h1")
-const basketContainer = createElement("div")
+const numberOfIngrediensandBurgers = createElement(ELEMENT.H1)
+const basketContainer = createElement(ELEMENT.DIV)
 appendChild(Price, numberOfIngrediensandBurgers)
 appendChild(Price, basketContainer)
 const ingredientCount = {
@@ -126,37 +119,30 @@ const ingredientPrice = {
   cheese2: 1.5
 }
 
-let stockPrice = 5
-const price = "Цена: "
+let stockPrice = defaultBurgerPrice
+const price = APP_TEXT_CONTENT.PRICE
 function addIngredients1(ingredientType, src, ingredients) {
-  const ingredientPosition = createElement("img")
-
+  const ingredientPosition = createElement(ELEMENT.IMG)
   setSource(ingredientPosition, src)
-  appendChild(burgerBeggining, ingredientPosition)
+  appendChild(burgerBeginning, ingredientPosition)
   ingredientCount[ingredientType] += 1
   if (ingredientCount[ingredientType] > 1) {
     stockPrice += ingredientPrice[ingredients]
-    textContent(normalPrice, price + stockPrice + "лв.")
+    textContent(normalPrice, price + stockPrice + APP_TEXT_CONTENT.CURRENCY_TYPE)
   }
-
 }
 
-
 function addToBasket() {
-  textContent(normalPrice, " Цена: 5лв.")
-  const deletingIngredient = getElementById(ingredientRemove)
+  textContent(normalPrice, `${APP_TEXT_CONTENT.PRICE} ${defaultBurgerPrice} ${APP_TEXT_CONTENT.CURRENCY_TYPE}`)
+  const deletingIngredient = getElementById(INGREDIENT_REMOVE_ID)
   deletingIngredient.innerHTML = null
   storeNumberofBurgers++
 
-  textContent(add5, storeNumberofBurgers + " Бургера в кошницата")
-
-
   let entries = Object.entries(ingredientCount);
-  const ingredientsList = createElement("ul")
+  const ingredientsList = createElement(ELEMENT.UL)
   for (const ingredientInformation of entries) {
     const [ingredientName, ingredientCount1] = ingredientInformation
     addIngredientInfo(ingredientName, ingredientCount1, ingredientsList)
-
   }
   textContent(numberOfIngrediensandBurgers, `${storeNumberofBurgers} бургера`)
   appendChild(basketContainer, ingredientsList)
@@ -168,13 +154,13 @@ function resetBurgerBuilder() {
       ingredientCount[placeOfingredient] = 0;
     }
   }
-  stockPrice = 5
+  stockPrice = defaultBurgerPrice
 }
 
 function addIngredientInfo(ingredientName, ingredientCount, parentNode) {
-  const listItem = createElement("li")
+  const listItem = createElement(ELEMENT.LI)
   textContent(listItem, `${ingredientCount}: ${ingredientName}`)
-  appendChild(parentNode,listItem)
+  appendChild(parentNode, listItem)
 }
-appendChild(root,Price)
+appendChild(root, Price)
 console.log({ root });
