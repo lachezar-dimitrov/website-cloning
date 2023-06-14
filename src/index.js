@@ -40,13 +40,14 @@ const navigationList = createElement(ELEMENT.UL);
 appendChild(root, navigation);
 appendChild(navigation, navigationList);
 
-for (const navigationItem of navigationItems) {
+function renderNavigationItem(navigationItem) {
   const navigationLink = createElement(ELEMENT.A);
   navigationLink.href = navigationItem.url;
   textContent(navigationLink, navigationItem.title);
   addClass(NAVIGATION_LINK, navigationLink);
   appendChild(navigationList, navigationLink);
 }
+navigationItems.forEach(renderNavigationItem);
 
 const burgerMenus = createElement(ELEMENT.DIV);
 addClass('burgers', burgerMenus);
@@ -130,31 +131,29 @@ function addToBasket() {
   );
   const deletingIngredient = getElementById(INGREDIENT_REMOVE_ID);
   deletingIngredient.innerHTML = null;
-  storeNumberofBurgers++;
+  storeNumberofBurgers += 1;
 
   const entries = Object.entries(ingredientCount);
   const ingredientsList = createElement(ELEMENT.UL);
-  for (const ingredientInformation of entries) {
+  entries.forEach((ingredientInformation) => {
     const [ingredientName, ingredientCount1] = ingredientInformation;
     addIngredientInfo(ingredientName, ingredientCount1, ingredientsList);
-  }
+  });
   textContent(numberOfIngrediensandBurgers, `${storeNumberofBurgers} бургера`);
   appendChild(basketContainer, ingredientsList);
   resetBurgerBuilder();
 }
 function resetBurgerBuilder() {
-  for (const placeOfingredient in ingredientCount) {
-    if (ingredientCount.hasOwnProperty(placeOfingredient)) {
-      ingredientCount[placeOfingredient] = 0;
-    }
-  }
+  const entries = Object.entries(ingredientCount);
+  entries.forEach((placeOfingredient) => {
+    ingredientCount[placeOfingredient] = 0;
+  });
   stockPrice = defaultBurgerPrice;
 }
 
-function addIngredientInfo(ingredientName, ingredientCount, parentNode) {
+function addIngredientInfo(ingredientName, ingredientCount12, parentNode) {
   const listItem = createElement(ELEMENT.LI);
-  textContent(listItem, `${ingredientCount}: ${ingredientName}`);
+  textContent(listItem, `${ingredientCount12}: ${ingredientName}`);
   appendChild(parentNode, listItem);
 }
 appendChild(root, Price);
-console.log({ root });
