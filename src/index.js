@@ -35,6 +35,10 @@ function addClass(className, element) {
   element.classList.add(className)
 }
 
+function appendChild(parentElement, childElement) {
+  parentElement.appendChild(childElement)
+}
+
 const ingredientRemove = "ingredientRemove"
 const burgerMenus = document.createElement("div");
 addClass("burgers", burgerMenus)
@@ -45,9 +49,9 @@ const burgerTop = document.createElement("img");
 burgerTop.src = "Images/burgerTop.jfif"
 const burgerBottom = document.createElement("img");
 burgerBottom.src = "Images/burgerBottom.jfif"
-burgerMenus.appendChild(burgerTop)
-burgerMenus.appendChild(burgerBeggining)
-burgerMenus.appendChild(burgerBottom)
+appendChild(burgerMenus, burgerTop)
+appendChild(burgerMenus, burgerBeggining)
+appendChild(burgerMenus, burgerBottom)
 const add1 = document.createElement("button")
 addClass("buttons", add1)
 add1.setAttribute("id", 'saladButton')
@@ -68,11 +72,10 @@ add4.addEventListener("click", () => addToBasket())
 addClass("buttons", add4)
 add4.textContent = "Добави в количка";
 
-
-burgerMenus.appendChild(add1)
-burgerMenus.appendChild(add2)
-burgerMenus.appendChild(add3)
-burgerMenus.appendChild(add4)
+appendChild(burgerMenus, add1)
+appendChild(burgerMenus, add2)
+appendChild(burgerMenus, add3)
+appendChild(burgerMenus, add4)
 root.appendChild(burgerMenus)
 
 const Price = document.createElement("div");
@@ -81,14 +84,15 @@ addClass("buttons", add5)
 add5.textContent = "Количка";
 const normalPrice = document.createElement("div")
 normalPrice.textContent = "Цена: 5лв."
-Price.appendChild(normalPrice)
+appendChild(Price, normalPrice)
+appendChild(Price, add5)
+
 Price.appendChild(add5)
 let storeNumberofBurgers = 0
 const numberOfIngrediensandBurgers = document.createElement("h1")
 const basketContainer = document.createElement("div")
-Price.appendChild(numberOfIngrediensandBurgers)
-Price.appendChild(basketContainer)
-
+appendChild(Price, numberOfIngrediensandBurgers)
+appendChild(Price, basketContainer)
 const ingredientCount = {
   salad: 0,
   meat: 0,
