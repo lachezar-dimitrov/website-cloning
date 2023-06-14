@@ -39,12 +39,16 @@ function appendChild(parentElement, childElement) {
   parentElement.appendChild(childElement)
 }
 
+function setAttribute(element, attributeKey, attributeValue) {
+  element.setAttribute(attributeKey, attributeValue)
+}
+
 const ingredientRemove = "ingredientRemove"
 const burgerMenus = document.createElement("div");
 addClass("burgers", burgerMenus)
 const burgerBeggining = document.createElement("div");
 addClass("burgers", burgerBeggining)
-burgerBeggining.setAttribute("id", ingredientRemove)
+setAttribute(burgerBeggining, "id", "ingredientRemove")
 const burgerTop = document.createElement("img");
 burgerTop.src = "Images/burgerTop.jfif"
 const burgerBottom = document.createElement("img");
@@ -54,18 +58,18 @@ appendChild(burgerMenus, burgerBeggining)
 appendChild(burgerMenus, burgerBottom)
 const add1 = document.createElement("button")
 addClass("buttons", add1)
-add1.setAttribute("id", 'saladButton')
+setAttribute(add1, "id", "saladButton")
 add1.textContent = "Добавете салата";
 add1.addEventListener("click", () => addIngredients1("salad", "Images/salad.jpg", "salad2"))
 const add2 = document.createElement("button")
 addClass("buttons", add2)
-add2.setAttribute("id", 'meatButton')
+setAttribute(add1, "id", "meatButton")
 add2.textContent = "Добавете месо";
 add2.addEventListener("click", () => addIngredients1("meat", "Images/meat.jpg", "meat2"))
 const add3 = document.createElement("button")
 addClass("buttons", add3)
 add3.textContent = "Добавете сирене";
-add3.setAttribute("id", 'cheeseButton')
+setAttribute(add1, "id", "cheeseButton")
 add3.addEventListener("click", () => addIngredients1("cheese", "Images/cheese.jpg", "cheese2"))
 const add4 = document.createElement("button")
 add4.addEventListener("click", () => addToBasket())
