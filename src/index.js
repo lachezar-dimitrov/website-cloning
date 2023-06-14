@@ -12,28 +12,27 @@ const navigationItems = [
     url: "/contact",
   },
 ];
+function getElementById(elementID){
+  return document.getElementById(elementID)
+}
+const root = getElementById("root");
+const navigation = createElement("nav");
+const navigationList = createElement("ul");
 
-const root = document.getElementById("root");
-const navigation = document.createElement("nav");
-const navigationList = document.createElement("ul");
-
-root.appendChild(navigation);
-navigation.appendChild(navigationList);
+appendChild(root, navigation)
+appendChild(navigation, navigationList)
 
 for (const navigationItem of navigationItems) {
-  const navigationLink = document.createElement("a");
+  const navigationLink = createElement("a");
 
   navigationLink.href = navigationItem.url;
-  navigationLink.textContent = navigationItem.title;
+  textContent(navigationLink , navigationItem.title)
 
   addClass("navigation__link", navigationLink)
-
-  navigationList.appendChild(navigationLink);
+  appendChild(navigationList, navigationLink)
 }
 
 function addClass(className, element) {
-  console.log(className)
-  console.log(element)
   element.classList.add(className)
 }
 
@@ -49,9 +48,18 @@ function textContent(element, textChange) {
   element.textContent = textChange
 }
 
-function createElement(elementType){
+function createElement(elementType) {
   return document.createElement(elementType)
 }
+
+function setSource(element, sourcePath) {
+  element.src = sourcePath
+}
+
+function addEventListener(element, type, listener ){
+  element.addEventListener(type,listener)
+}
+
 
 const ingredientRemove = "ingredientRemove"
 const burgerMenus = createElement("div")
@@ -60,9 +68,9 @@ const burgerBeggining = createElement("div");
 addClass("burgers", burgerBeggining)
 setAttribute(burgerBeggining, "id", "ingredientRemove")
 const burgerTop = createElement("img");
-burgerTop.src = "Images/burgerTop.jfif"
+setSource(burgerTop, "Images/burgerTop.jfif")
 const burgerBottom = createElement("img");
-burgerBottom.src = "Images/burgerBottom.jfif"
+setSource(burgerBottom, "Images/burgerBottom.jfif")
 appendChild(burgerMenus, burgerTop)
 appendChild(burgerMenus, burgerBeggining)
 appendChild(burgerMenus, burgerBottom)
@@ -70,19 +78,19 @@ const add1 = createElement("button")
 addClass("buttons", add1)
 setAttribute(add1, "id", "saladButton")
 textContent(add1, "Добавете салата")
-add1.addEventListener("click", () => addIngredients1("salad", "Images/salad.jpg", "salad2"))
+addEventListener(add1,"click" , () => addIngredients1("salad", "Images/salad.jpg", "salad2"))
 const add2 = createElement("button")
 addClass("buttons", add2)
 setAttribute(add1, "id", "meatButton")
 textContent(add2, "Добавете месо")
-add2.addEventListener("click", () => addIngredients1("meat", "Images/meat.jpg", "meat2"))
+addEventListener(add2,"click" , () => addIngredients1("meat", "Images/meat.jpg", "meat2"))
 const add3 = createElement("button")
 addClass("buttons", add3)
 textContent(add3, "Добавете сирене")
 setAttribute(add1, "id", "cheeseButton")
-add3.addEventListener("click", () => addIngredients1("cheese", "Images/cheese.jpg", "cheese2"))
+addEventListener(add3,"click", () => addIngredients1("cheese", "Images/cheese.jpg", "cheese2"))
 const add4 = createElement("button")
-add4.addEventListener("click", () => addToBasket())
+addEventListener(add4,"click", () => addToBasket())
 addClass("buttons", add4)
 textContent(add4, "Добавете в количката")
 
@@ -90,13 +98,12 @@ appendChild(burgerMenus, add1)
 appendChild(burgerMenus, add2)
 appendChild(burgerMenus, add3)
 appendChild(burgerMenus, add4)
-root.appendChild(burgerMenus)
+appendChild(root,burgerMenus)
 
 const Price = createElement("div");
 const add5 = createElement("button")
 addClass("buttons", add5)
 textContent(add5, "Количка")
-add5.textContent = "Количка";
 const normalPrice = createElement("div")
 textContent(normalPrice, "Цена: 5лв.")
 appendChild(Price, normalPrice)
@@ -123,8 +130,9 @@ let stockPrice = 5
 const price = "Цена: "
 function addIngredients1(ingredientType, src, ingredients) {
   const ingredientPosition = createElement("img")
-  ingredientPosition.src = src
-  burgerBeggining.appendChild(ingredientPosition)
+
+  setSource(ingredientPosition, src)
+  appendChild(burgerBeggining, ingredientPosition)
   ingredientCount[ingredientType] += 1
   if (ingredientCount[ingredientType] > 1) {
     stockPrice += ingredientPrice[ingredients]
@@ -135,8 +143,8 @@ function addIngredients1(ingredientType, src, ingredients) {
 
 
 function addToBasket() {
-  normalPrice.textContent = "Цена: 5лв."
-  const deletingIngredient = document.getElementById(ingredientRemove)
+  textContent(normalPrice, " Цена: 5лв.")
+  const deletingIngredient = getElementById(ingredientRemove)
   deletingIngredient.innerHTML = null
   storeNumberofBurgers++
 
@@ -151,7 +159,7 @@ function addToBasket() {
 
   }
   textContent(numberOfIngrediensandBurgers, `${storeNumberofBurgers} бургера`)
-  basketContainer.appendChild(ingredientsList)
+  appendChild(basketContainer, ingredientsList)
   resetBurgerBuilder()
 }
 function resetBurgerBuilder() {
@@ -166,8 +174,7 @@ function resetBurgerBuilder() {
 function addIngredientInfo(ingredientName, ingredientCount, parentNode) {
   const listItem = createElement("li")
   textContent(listItem, `${ingredientCount}: ${ingredientName}`)
-  parentNode.appendChild(listItem)
+  appendChild(parentNode,listItem)
 }
-
-root.appendChild(Price)
+appendChild(root,Price)
 console.log({ root });
