@@ -1,4 +1,4 @@
-:root {
+/* :root {
   --primary-color: white;
   --text: #455963;
   --links: #4caf50;
@@ -69,10 +69,10 @@ img {
   height: 4vh;
   border: 2px solid black;
   border-radius: 20px;
-  font-size: 15px;
+  font-size: 1.2vw;
   text-align: center;
 }
-/* Header */
+
 ul {
   list-style: none;
   padding: 0;
@@ -87,10 +87,9 @@ ul {
 }
 
 nav {
-  z-index: 1;
+  margin-bottom : 20px;
   font-family: "Alice", serif;
   background-color: var(--primary-color);
-  position: fixed;
   width: 100%;
   display: grid;
   grid-template-areas: ". nav nav";
@@ -122,10 +121,7 @@ Header nav a:hover,
   color: var(--hover);
   text-shadow: none;
 }
-/* /header */
 
-/* main-content */
-/* content-text */
 .fixed-position {
   background-color: var(--primary-color);
   padding: 2%;
@@ -169,9 +165,7 @@ p {
   padding: 5% 7%;
   font-size: 1.25vw;
 }
-/* /content-text */
 
-/* media */
 .media {
   padding: 0 5%;
   display: grid;
@@ -234,9 +228,7 @@ p {
   color: white;
   font-size: 1.5vw;
 }
-/* /media */
 
-/* services */
 .services {
   display: grid;
   grid-template-columns: auto;
@@ -259,11 +251,6 @@ p {
   background-color: yellow;
 }
 
-/* /services */
-
-/* /main-content */
-
-/* contact-form*/
 #orders-tittle {
   background-color: pink;
   grid-area: top_left;
@@ -336,9 +323,9 @@ textarea:focus {
   height: 40px;
   background-color: #474e69;
   color: #fff;
-  border-radius: 3px;
+  //border-radius: 3px;
   -moz-border-radius: 3px;
-  -webkit-border-radius: 3px;
+  //-webkit-border-radius: 3px;
 }
 
 .submit input:hover {
@@ -351,9 +338,7 @@ textarea:focus {
 #orders-bg {
   width: 100%;
 }
-/* /contact-form */
 
-/* footer */
 footer {
   font-family: "Alice", serif;
   background-color: var(--footer);
@@ -382,7 +367,7 @@ footer a:visited {
   display: grid;
   grid-template-columns: auto auto auto;
 }
-/* /footer */
+
 
 @media only screen and (min-width: 150px) and (max-width: 1000px) {
   body {
@@ -473,4 +458,61 @@ footer a:visited {
     padding: 1% 1%;
     text-align: center;
   }
+} */
+
+ .mainBurgersDiv{
+  display: grid;
+  grid-template-columns: auto auto;
+  font-size: 1.2vw;
+ }
+ .mainDivNameandPassword{
+  display: grid;
+  grid-template-areas: 
+  "head head head"
+  "side side side"
+  "foot foot foot"
+  ;
+  justify-items: center;
+ }
+
+ .inputView{
+  border: 1px solid transparent;
+  height: 1.5vh;
+  margin-top: 0.5vh;
+  font-size: 1.5vw;
+  background-color: #474e69;
+ }
+ 
+ .divName_Name{
+  grid-area: head;
+  display: grid;
+  background-color: #61f066;
+  font-size: 1.5vw;
+  border-top: 5px;
+  border-radius: 5px;
 }
+
+ .divName_Password{
+  display: grid;
+  grid-area: side;
+  background-color: #61f066;
+  font-size: 1.5vw;
+}
+ .buttonEnter{
+  grid-area: foot;
+  width: 7vw;
+  background-color: #61f066;
+  border: 2px solid transparent;
+  border-radius: 3vw;
+  font-size: 1.5vw;
+  margin-top: 1vh;
+ }
+ .burgers{
+  display: grid;
+}
+ .burgers>button{
+  width: 10vw;
+ }
+ .burgers>img{
+  width: 20vw;
+ }

@@ -2,6 +2,7 @@ export const ROOT_ID = 'root';
 export const INGREDIENT_REMOVE_ID = 'ingredientRemove';
 export const NAVIGATION_LINK = 'navigation__link';
 export const BUTTONS_CLASS_NAME = 'buttons';
+export const MAIN_CONTENT_ID = 'mainContent';
 export const ELEMENT = {
   DIV: 'div',
   NAV: 'nav',
@@ -11,6 +12,8 @@ export const ELEMENT = {
   BUTTON: 'button',
   H1: 'h1',
   LI: 'li',
+  LABEL: 'label',
+  INPUT: 'input',
 };
 export const APP_TEXT_CONTENT = {
   ADD_SALAD: 'Добавете салата',
